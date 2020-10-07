@@ -21,15 +21,15 @@ b = int(argv[3])
 
 fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(6, 6))
 
-plt.scatter(data[:,a],data[:,b])
+plt.scatter(data[1:,a],data[1:,b])
 
-r = np.corrcoef(data[:,a],data[:,b])
-s = np.polyfit(data[:,a],data[:,b],1)
+r = np.corrcoef(data[1:,a],data[1:,b])
+s = np.polyfit(data[1:,a],data[1:,b],1)
 
-x = np.linspace(0,max(data[:,a]),100)
+x = np.linspace(0,max(data[1:,a]),100)
 y = s[0]*x + s[1]
 plt.plot(x,y,'-k')
-axes.text(0.01, max(data[:,b]), "r=" + str(r[0,1]))
+axes.text(0.01, max(data[1:,b]), "r=" + str(r[0,1]))
 
 fig.suptitle("Plotting Lines")
 # fig.subplots_adjust(hspace=0.4)
